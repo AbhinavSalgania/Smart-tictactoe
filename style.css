@@ -1,0 +1,133 @@
+body{
+    background-color: rgb(43, 43, 43);
+    color: rgb(251, 251, 251);
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 1em;
+    line-height: 1.5em;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.h1 {
+    font-size: 3em;
+    font-weight: bold;
+    color: rgb(163, 163, 163);
+    text-align: center;
+    background-color: rgb(19, 19, 19);
+    height: 2em;
+    padding-top: 1em;
+}
+
+#message, #mode{
+    font-size: 1.5em;
+    color: rgb(163, 163, 163);
+    text-align: center;
+}
+
+#gameBoard{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.box{
+    width: 124px;
+    height: 124px;
+    border: 1px solid rgb(232, 231, 232);
+    background-color: rgb(19, 19, 19);
+    text-align: center;
+    font-size: 4em;
+    color: rgb(163, 163, 163);
+    vertical-align: middle;
+    line-height: 124px;
+}
+
+.box:hover{
+    background-color: rgb(232, 231, 232);
+}
+
+.button{
+    text-align: center;
+}
+
+#reset, #signin, #signout, #vsPlayer, #vsComputer, #online {
+    background-color: rgb(43,43,43);
+    border: solid 1px rgb(232, 231, 232);
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    border-radius: 20px;
+    font-size: 16px;
+    margin: 20px;
+}
+
+
+#reset:hover, #signin:hover, #signout:hover, #vsPlayer:hover, #vsComputer:hover, #online:hover{
+    cursor: pointer;
+    background-color: rgb(232, 231, 232);
+    color: rgb(43,43,43);
+}
+
+footer{
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    height: 2em;
+    background-color: rgb(110,110,110);
+    text-align: center;
+    color: rgb(251, 251, 251);
+}
+
+a{
+    color: rgb(251, 251, 251);
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+#startScreen{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.nameContainer{
+    position: absolute;
+    top: 50%;
+    width: 18%;
+    height: 2em;
+    background-color: rgb(19, 19, 19);
+    border: 1px solid rgb(232, 231, 232);
+    border-radius: 20px;
+    padding: 2px;
+    text-align: center;
+    font-size: 0.8em;
+    color: rgb(163, 163, 163);
+}
+    
+.nameContainer input[type="text"]{
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 1.5em;
+    width: 80%;
+    margin-bottom: 10px;
+    outline: none;
+}
+    
+#player1Container{
+    left: 4%;
+}
+    
+#player2Container{
+    right: 4%;
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    
+</head>
+<body>
+    <div class="h1" > Tic Tac Toe</div>
+
+    <div id="startScreen">
+        <div>
+            <p id="mode">Choose your mode</p>
+            <button id="vsComputer">Player vs Computer</button>
+            <button id="vsPlayer">Player vs Player</button>
+            <button id="online">Online</button>
+        </div>
+    </div>
+
+    <div id="playScreen">
+
+        <p id="message"> Player 1's turn </p>
+
+        <div id="gameBoard">
+            <div class="row">
+                <div class="box" id="box1"></div>
+                <div class="box" id="box2"></div>
+                <div class="box" id="box3"></div>
+            </div>
+            <div class="row">
+                <div class="box" id="box4"></div>
+                <div class="box" id="box5"></div>
+                <div class="box" id="box6"></div>
+            </div>
+            <div class="row">
+                <div class="box" id="box7"></div>
+                <div class="box" id="box8"></div>
+                <div class="box" id="box9"></div>
+            </div>
+        </div>
+
+        <div class = "button">
+            <button id="reset">Reset</button>
+
+            <button id="signin">Sign In</button>
+
+            <button id="signout">Sign Out</button>
+        </div>
+    </div>
+
+    <div id="player1Container" class="nameContainer pvp">
+            <label for="player1">X</label>
+        <input type="text" id="player1" placeholder="Player 1" autocomplete="off">
+    </div>
+    
+    <div id="player2Container" class="nameContainer pvp">
+            <label for="player2">O</label>
+        <input type="text" id="player2" placeholder="Player 2" autocomplete="off">
+    </div>
+
+</body>
+<footer id="footer">
+    <a href="https://github.com/AbhinavSalgania">Created by &copy; Abhinav Salgania</a>
+    </footer>
+
+</html>
