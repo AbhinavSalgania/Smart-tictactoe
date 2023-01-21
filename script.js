@@ -15,6 +15,7 @@ const easy = document.querySelector('#easy');
 const medium = document.querySelector('#medium');
 const hard = document.querySelector('#hard');
 
+
 const player = (name, symbol) => {
     const getName = () => name;
     const getSymbol = () => symbol;
@@ -198,7 +199,6 @@ const displayController = (() => {
 
                         if (playvsComputer && currentPlayer.getName() === 'Computer' && clicks < 5) {
                             // if all boxes are filled after last player render, game is over and do not call computerMove()
-                            console.log('entered');
                             computerMove();
                             if (gameFlow.checkWin()){
                                 message.textContent = `${currentPlayer.getName()} wins!`;
@@ -230,6 +230,10 @@ const displayController = (() => {
 
     // computer move using random number
     const computerMove = () => {
+
+        // if level is easy, computer will choose a random box
+        // if level is hard, computer will choose the best move from ai module
+        if (level.value === 'easy') {
             
         let board = gameBoard.getBoard();
         let random = Math.floor(Math.random() * 9);
@@ -238,6 +242,14 @@ const displayController = (() => {
         }
         gameBoard.setBoard(random, player2.getSymbol());
         render();
+        }
+        else if (level.value === 'hard') {
+            let bestMove = ai.getBestMove(gameBoard.getBoard());
+            gameBoard.setBoard(bestMove, player2.getSymbol());
+            render();
+        }
+
+
         if (gameFlow.checkWin()){
             message.textContent = `${player2.getName()} wins!`;
             gameOver = true;
@@ -285,13 +297,36 @@ const gameFlow = (() => {
         winConditions.forEach((condition) => {
             if (board[condition[0]] === board[condition[1]] && board[condition[1]] === board[condition[2]] && board[condition[0]] !== '') {
                 boxes[condition[0]].style.color = 'green';
-                boxes[condition[1]].style.color = 'green';
-                boxes[condition[2]].style.color = 'green';
+                boxes[condition[1]].style.color = 'red';
+                boxes[condition[2]].style.color = 'blue';
                 win = true;
             }
         });
         return win;
     };
+
+    const checkDraw = (board) => {
+        let draw = true;
+        board.forEach((box) => {
+            if (box === '' ) {
+                draw = false;
+            }
+        }
+        );
+        return draw;
+    }
+
+    const checkResult =(board) => {
+        if(checkWin(board)) {
+            return 'win';
+        }
+        else if (checkDraw(board)) {
+            return 'draw';
+        }
+        else {
+            return 'ongoing';
+        }
+    }
 
     const switchPlayer = () => {
         if (currentPlayer === player1) {
@@ -310,7 +345,68 @@ const gameFlow = (() => {
     };
 
     return {
+        checkResult,
         checkWin,
         switchPlayer,
+    };
+})();
+
+// add AI Module
+// use minimax algorithm
+
+const ai = (() => {
+    const minimax = (board, depth, isMaximizing) => {
+        let result = gameFlow.checkResult(board);
+        if (result === 'win') {
+            return isMaximizing ? -1 : 1;
+        }
+        else if (result === 'draw') {
+            return 0;
+        }
+
+        if (isMaximizing) {
+            let bestScore = -Infinity;
+            for (let i = 0; i < board.length; i++) {
+                if (board[i] === '') {
+                    board[i] = player2.getSymbol();
+                    let score = minimax(board, depth + 1, false);
+                    board[i] = '';
+                    bestScore = Math.max(score, bestScore);
+                }
+            }
+            return bestScore;
+        } else {
+            let bestScore = Infinity;
+            for (let i = 0; i < board.length; i++) {
+                if (board[i] === '') {
+                    board[i] = player1.getSymbol();
+                    let score = minimax(board, depth + 1, true);
+                    board[i] = '';
+                    bestScore = Math.min(score, bestScore);
+                }
+            }
+            return bestScore;
+        }
+    };
+
+    const getBestMove = (board) => {
+        let bestScore = -Infinity;
+        let move;
+        for (let i = 0; i < board.length; i++) {
+            if (board[i] === '') {
+                board[i] = player2.getSymbol();
+                let score = minimax(board, 0, false);
+                board[i] = '';
+                if (score > bestScore) {
+                    bestScore = score;
+                    move = i;
+                }
+            }
+        }
+        return move;
+    };
+
+    return {
+        getBestMove,
     };
 })();
