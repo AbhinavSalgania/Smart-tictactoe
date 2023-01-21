@@ -9,6 +9,11 @@ const vsComputer = document.querySelector('#vsComputer');
 const vsPlayer = document.querySelector('#vsPlayer');
 const playerName = document.querySelector('.nameContainer');
 const pvp = document.querySelectorAll('.pvp');
+const levelContainer = document.querySelector('#levels');
+const backButton = document.querySelector('#back');
+const easy = document.querySelector('#easy');
+const medium = document.querySelector('#medium');
+const hard = document.querySelector('#hard');
 
 const player = (name, symbol) => {
     const getName = () => name;
@@ -29,8 +34,12 @@ let currentPlayer = player1;
 let gameOver = false;
 let playvsComputer = false;
 let oppcomputer = false;
+let clicks = 0;
 // hide play screen and show start screen on page load
 playScreen.style.display = 'none';
+levelContainer.style.display = 'none';
+backButton.style.display = 'none';
+
 
 pvp.forEach((player) => {
     player.style.display = 'none';
@@ -48,9 +57,14 @@ vsComputer.addEventListener('click', () => {
     playvsComputer = true;
     oppcomputer = true;
     startGame();
+    levelContainer.style.display = 'block';
+    backButton.style.display = 'block';
 });
 
-vsPlayer.addEventListener('click', startGame);
+vsPlayer.addEventListener('click', () => {
+    startGame();
+    backButton.style.display = 'block';
+});
 
 // display player name input on click
 vsPlayer.addEventListener('click', () => {
@@ -58,6 +72,28 @@ vsPlayer.addEventListener('click', () => {
         player.style.display = 'block';
     });
 });
+
+
+//Back button
+backButton.addEventListener('click', () => {
+
+    // if clicks is more than 1, ask the user to refresh the page
+    if (clicks > 0) {
+        alert('Please refresh the page to go to home page');
+    }
+
+    // if clicks is 0, go back to home page
+    else {
+        startScreen.style.display = 'block';
+        playScreen.style.display = 'none';
+        levelContainer.style.display = 'none';
+        backButton.style.display = 'none';
+        pvp.forEach((player) => {
+            player.style.display = 'none';
+        });
+    }
+});
+
 
 // player name input
 
@@ -119,11 +155,11 @@ const displayController = (() => {
         render();
         message.textContent = `${player1.getName()}'s turn`;
         gameOver = false;
+        clicks = 0;
 
         if (oppcomputer) {
             player1 = player('Player 1', 'X');
             player2 = player('Computer', 'O');
-            clicks = 0;
             currentPlayer = player1;
         }
         else {
@@ -139,7 +175,6 @@ const displayController = (() => {
 
     resetButton.addEventListener('click', reset);
 
-    let clicks = 0;
 
     // add click event to each box 
     const addClickEvent = () => {

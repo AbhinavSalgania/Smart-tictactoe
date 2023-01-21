@@ -59,7 +59,7 @@ body{
     text-align: center;
 }
 
-#reset, #signin, #signout, #vsPlayer, #vsComputer, #online {
+#reset, #signin, #signout, #vsPlayer, #vsComputer, #online, #back {
     background-color: rgb(43,43,43);
     border: solid 1px rgb(232, 231, 232);
     color: white;
@@ -71,7 +71,7 @@ body{
 }
 
 
-#reset:hover, #signin:hover, #signout:hover, #vsPlayer:hover, #vsComputer:hover, #online:hover{
+#reset:hover, #signin:hover, #signout:hover, #vsPlayer:hover, #vsComputer:hover, #online:hover, #back:hover{
     cursor: pointer;
     background-color: rgb(232, 231, 232);
     color: rgb(43,43,43);
@@ -130,4 +130,19 @@ a{
     
 #player2Container{
     right: 4%;
+}
+
+#back{
+    position: absolute;
+    top: 21%;
+    left: 5%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(43,43,43);
+    border: solid 1px rgb(232, 231, 232);
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    border-radius: 20px;
+    font-size: 16px;
+    margin: 20px;
 }
