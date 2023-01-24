@@ -297,8 +297,8 @@ const gameFlow = (() => {
         winConditions.forEach((condition) => {
             if (board[condition[0]] === board[condition[1]] && board[condition[1]] === board[condition[2]] && board[condition[0]] !== '') {
                 boxes[condition[0]].style.color = 'green';
-                boxes[condition[1]].style.color = 'red';
-                boxes[condition[2]].style.color = 'blue';
+                boxes[condition[1]].style.color = 'green';
+                boxes[condition[2]].style.color = 'green';
                 win = true;
             }
         });
