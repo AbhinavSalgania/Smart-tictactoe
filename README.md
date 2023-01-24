@@ -4,5 +4,6 @@ Play the game here: <a href="https://abhinavsalgania.github.io/Smart-tictactoe/"
 
 To Do:
 Fix win condition color bug in AI mode
+
 Fix Reset button
 
