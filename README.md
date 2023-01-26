@@ -29,6 +29,10 @@ This enables the user to reset a game when a game ends without reloading the pag
 
 You can access the live version of the game here: <a href="https://abhinavsalgania.github.io/Smart-tictactoe/">Smart Tic Tac Toe</a>
 
+## Features to be added
+
+* Responsive CSS
+
 ## Known bugs
 
 * Win condition color bug in AI mode
