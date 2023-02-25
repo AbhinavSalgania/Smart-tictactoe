@@ -2,6 +2,8 @@
 
 This is a Tic Tac Toe game that allows you to play against another player or against the computer. The game is built using vanilla JavaScript, HTML, and CSS. It is hosted using Github pages.
 
+![ttt](https://user-images.githubusercontent.com/60488689/221379811-cb7e500a-5fd2-4b69-92f2-7f914de7fdda.jpg)
+
 ## Gameplay
 
 When you first load the game, you will be presented with two options: play against player or play against computer. 
